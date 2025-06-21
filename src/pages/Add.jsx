@@ -2,6 +2,12 @@ import "./Add.css"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
+const goToViewPage = () => {
+    if (typeof window !== "undefined" && window.location) {
+        window.location.href = "/view";
+    }
+}
+
 // This is a simple display component to show the added item data
 const ItemPreview = ({ data, onClose }) => {
     const navigate = useNavigate();
@@ -239,11 +245,12 @@ const Add = () => {
                             type="button"
                             onClick={() => {
                                 // Ensure navigate is defined
-                                if (typeof navigate === "function") {
-                                    navigate('/view');
-                                } else {
-                                    window.location.href = '/view';
-                                }
+                                // if (typeof navigate === "function") {
+                                //     navigate('/view');
+                                // } else {
+                                //     window.location.href = '/view';
+                                // }
+                                goToViewPage();
                             }}
                         >
                             View Items
